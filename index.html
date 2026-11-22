@@ -112,16 +112,69 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" aria-labelledby="hero-title">
-  <div class="hero-media">
-    <img class="hero-img" src="assets/images/827808325.jpg" width="1024" height="768" fetchpriority="high" decoding="async"
-      alt="The Little Mermaid houseboat on the backwater, with coconut palms behind it">
+  <!-- Hero slideshow: the first slide loads immediately; the others load in the background, one ahead of time. -->
+  <div class="hero-slides" id="hero-slides" role="region" aria-roledescription="carousel" aria-label="Photos of the Little Mermaid houseboat">
+    <figure class="hero-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 19" data-caption="The houseboat on the backwater">
+      <img class="hs-main" src="assets/images/827808325.jpg" width="1024" height="768" fetchpriority="high" decoding="async" alt="The Little Mermaid houseboat on the backwater, with coconut palms behind it">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 19" aria-hidden="true" data-caption="Moored at the water's edge">
+      <img class="hs-main" data-src="assets/images/827808405.jpg" width="1024" height="768" decoding="async" alt="The houseboat moored beside water hyacinth, its woven cane sides reflected in the water">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 19" aria-hidden="true" data-caption="Upper deck seating with water views">
+      <img class="hs-main" data-src="assets/images/827808388.jpg" width="1024" height="768" decoding="async" alt="Cane armchairs with navy cushions on the upper deck, looking out to open water">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="4 of 19" aria-hidden="true" data-caption="Superior Cabin, with a window onto the water">
+      <img class="hs-main" data-src="assets/images/827808317.jpg" width="1024" height="768" decoding="async" alt="The cabin's double bed facing a wide window onto the backwater">
+    </figure>
+    <figure class="hero-slide is-portrait" role="group" aria-roledescription="slide" aria-label="5 of 19" aria-hidden="true" data-caption="The covered upper deck">
+      <img class="hs-bg" data-src="assets/images/827808357.jpg" width="576" height="768" decoding="async" alt="">
+      <img class="hs-main" data-src="assets/images/827808357.jpg" width="576" height="768" decoding="async" alt="Cane armchairs around low tables on a patterned rug on the covered upper deck">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="6 of 19" aria-hidden="true" data-caption="The thatched roof and upper deck">
+      <img class="hs-main" data-src="assets/images/827808367.jpg" width="1024" height="768" decoding="async" alt="The coir-thatched roof and upper deck seen from above, with the sun terrace beyond">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="7 of 19" aria-hidden="true" data-caption="The lounge">
+      <img class="hs-main" data-src="assets/images/827808362.jpg" width="1024" height="575" decoding="async" alt="A carved wooden sofa and armchair with green cushions in the lounge">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="8 of 19" aria-hidden="true" data-caption="Along the upper deck railing">
+      <img class="hs-main" data-src="assets/images/827808355.jpg" width="1024" height="768" decoding="async" alt="Cane chairs along the upper deck railing, with the sun terrace and water beyond">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="9 of 19" aria-hidden="true" data-caption="The sun terrace">
+      <img class="hs-main" data-src="assets/images/827808554.jpg" width="1024" height="768" decoding="async" alt="A cane chair beside the open sun terrace, laid with artificial grass">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="10 of 19" aria-hidden="true" data-caption="The cabin through its carved door">
+      <img class="hs-main" data-src="assets/images/827808322.jpg" width="1024" height="768" decoding="async" alt="The cabin seen through its carved wooden door, with a ceiling fan and wall-mounted air conditioner">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="11 of 19" aria-hidden="true" data-caption="Cane armchairs on the deck">
+      <img class="hs-main" data-src="assets/images/827808330.jpg" width="1024" height="768" decoding="async" alt="Cane armchairs with navy cushions around a glass coffee table on the deck">
+    </figure>
+    <figure class="hero-slide is-portrait" role="group" aria-roledescription="slide" aria-label="12 of 19" aria-hidden="true" data-caption="Polished wooden decking">
+      <img class="hs-bg" data-src="assets/images/827808350.jpg" width="576" height="768" decoding="async" alt="">
+      <img class="hs-main" data-src="assets/images/827808350.jpg" width="576" height="768" decoding="async" alt="The upper deck with polished wooden floors and cane armchairs on a patterned rug">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="13 of 19" aria-hidden="true" data-caption="The dining table">
+      <img class="hs-main" data-src="assets/images/827808359.jpg" width="1024" height="575" decoding="async" alt="A glass-topped carved wooden dining table beside large windows">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="14 of 19" aria-hidden="true" data-caption="Loungers on the upper deck">
+      <img class="hs-main" data-src="assets/images/827808381.jpg" width="1024" height="768" decoding="async" alt="Two cane loungers framing the upper deck seating area, seen from the sun terrace">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="15 of 19" aria-hidden="true" data-caption="Deck seating with palm views">
+      <img class="hs-main" data-src="assets/images/827808372.jpg" width="1024" height="768" decoding="async" alt="Upper deck seating under a decorative ceiling panel, with coconut palms outside">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="16 of 19" aria-hidden="true" data-caption="Private bathroom with shower">
+      <img class="hs-main" data-src="assets/images/676995729.jpg" width="1024" height="768" decoding="async" alt="The private bathroom with a ceiling rain shower and botanical-print walls">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="17 of 19" aria-hidden="true" data-caption="From the top of the stairs">
+      <img class="hs-main" data-src="assets/images/827808338.jpg" width="1024" height="768" decoding="async" alt="The upper deck seating seen from the top of the wooden staircase">
+    </figure>
+    <figure class="hero-slide is-portrait" role="group" aria-roledescription="slide" aria-label="18 of 19" aria-hidden="true" data-caption="The bathroom">
+      <img class="hs-bg" data-src="assets/images/676995750.jpg" width="576" height="768" decoding="async" alt="">
+      <img class="hs-main" data-src="assets/images/676995750.jpg" width="576" height="768" decoding="async" alt="The bathroom washbasin, lit mirror and toilet against botanical-print walls">
+    </figure>
+    <figure class="hero-slide" role="group" aria-roledescription="slide" aria-label="19 of 19" aria-hidden="true" data-caption="Coir pillars and wooden railings">
+      <img class="hs-main" data-src="assets/images/827808393.jpg" width="1024" height="768" decoding="async" alt="A coir-wrapped pillar and wooden railings beside the upper deck seating">
+    </figure>
   </div>
-  <svg class="hero-water" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <g class="shimmer" fill="none" stroke="#f7f2e7" stroke-linecap="round">
-      <path d="M80 70h160M520 96h220M980 60h180M300 140h240M1120 128h200" stroke-opacity=".22" stroke-width="2"/>
-      <path d="M200 112h90M760 132h120M1260 88h90M40 160h140" stroke-opacity=".14" stroke-width="2"/>
-    </g>
-  </svg>
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <p class="eyebrow eyebrow--light">A private houseboat experience in Alleppey</p>
@@ -132,10 +185,28 @@
         <a class="btn btn--glass" href="#experience">Explore the houseboat</a>
       </p>
     </div>
-    <a class="hero-score" href="#reviews">
-      <span class="hero-score-num">9.9</span>
-      <span class="hero-score-text"><strong>Guest review score</strong><span>out of 10, from 32 reviews on the listing</span></span>
-    </a>
+    <div class="hero-side">
+      <a class="hero-score" href="#reviews">
+        <span class="hero-score-num">9.9</span>
+        <span class="hero-score-text"><strong>Guest review score</strong><span>out of 10, from 32 reviews on the listing</span></span>
+      </a>
+      <div class="hero-controls" id="hero-controls" hidden>
+        <div class="hc-buttons">
+          <button type="button" class="hc-btn" id="hero-prev" aria-controls="hero-slides" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          </button>
+          <button type="button" class="hc-btn" id="hero-pause" aria-controls="hero-slides" aria-label="Pause slideshow">
+            <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6v12M15 6v12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>
+          </button>
+          <button type="button" class="hc-btn" id="hero-next" aria-controls="hero-slides" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <p class="hc-caption" id="hero-caption" aria-live="off"><span id="hero-caption-text">The houseboat on the backwater</span><span class="hc-count" id="hero-count">1 / 19</span></p>
+        <span class="hc-progress" aria-hidden="true"><span id="hero-progress"></span></span>
+      </div>
+    </div>
   </div>
 </section>
 
