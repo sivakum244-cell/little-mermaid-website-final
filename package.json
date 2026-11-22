@@ -2,9 +2,5 @@
   "name": "little-mermaid-houseboat",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "node scripts/build.mjs",
-    "start": "node scripts/build.mjs && node scripts/serve.mjs"
-  }
+  "description": "Static site. No build step: index.html and assets/ are served as they are."
 }
