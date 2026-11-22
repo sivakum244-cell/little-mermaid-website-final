@@ -112,8 +112,8 @@ figure { margin: 0; }
 /* Hero slideshow */
 .hero-slides { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 /* The outgoing photo stays visible underneath while the new one fades in on top, so there is no dark dip. */
-.hero-slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity 0s linear 1.4s, visibility 0s linear 1.4s; }
-.hero-slide.is-active { opacity: 1; visibility: visible; transition: opacity 1.4s ease, visibility 0s; z-index: 1; }
+.hero-slide { position: absolute; inset: 0; margin: 0; opacity: 0; visibility: hidden; transition: opacity 0s linear var(--fade-ms, 1.4s), visibility 0s linear var(--fade-ms, 1.4s); }
+.hero-slide.is-active { opacity: 1; visibility: visible; transition: opacity var(--fade-ms, 1.4s) ease, visibility 0s; z-index: 1; }
 .hero-slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 55% 55%; }
 .hs-bg { display: none; }
 /* Tall photos on wide screens: show the whole photo on the right, over a blurred copy */
@@ -122,7 +122,7 @@ figure { margin: 0; }
   .hero-slide.is-portrait .hs-main { object-fit: contain; object-position: 82% 50%; padding: calc(var(--header-h) + 1rem) 0 2rem; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-slide.is-active .hs-main { animation: drift 9s ease-out both; transform-origin: 60% 55%; }
+  .hero-slide.is-active .hs-main { animation: drift calc(var(--slide-ms, 6000ms) * 1.5) ease-out both; transform-origin: 60% 55%; }
   .hero-slide.is-portrait.is-active .hs-main { animation: none; }
 }
 @media (prefers-reduced-motion: reduce) { .hero-slide, .hero-slide.is-active { transition: none; } }
