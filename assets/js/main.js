@@ -14,6 +14,94 @@
     img.addEventListener("error", function () { markMissing(img); });
   });
 
+  /* ---------- Hero slideshow ---------- */
+  (function heroSlideshow() {
+    var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
+    var controls = $("hero-controls");
+    if (slides.length < 2 || !controls) return;
+    var DELAY = 6000;
+    var cur = 0, timer = null, playing = !reduceMotion;
+    var pauseBtn = $("hero-pause"), capText = $("hero-caption-text"), count = $("hero-count"), cap = $("hero-caption"), bar = $("hero-progress");
+    document.documentElement.style.setProperty("--slide-ms", DELAY + "ms");
+
+    function load(slide) {
+      slide.querySelectorAll("img[data-src]").forEach(function (img) {
+        img.addEventListener("error", function () { slide.dataset.broken = "1"; }, { once: true });
+        img.src = img.getAttribute("data-src");
+        img.removeAttribute("data-src");
+      });
+    }
+    function restartBar() {
+      bar.classList.remove("is-running", "is-paused");
+      void bar.offsetWidth; // restart the CSS animation
+      if (playing) bar.classList.add("is-running");
+    }
+    function go(i, fromUser) {
+      var n = slides.length;
+      i = (i + n) % n;
+      var guard = 0;
+      while (slides[i].dataset.broken && guard++ < n) i = (i + (fromUser === -1 ? -1 : 1) + n) % n;
+      load(slides[i]);
+      slides[cur].classList.remove("is-active");
+      slides[cur].setAttribute("aria-hidden", "true");
+      slides[i].classList.add("is-active");
+      slides[i].removeAttribute("aria-hidden");
+      cur = i;
+      cap.setAttribute("aria-live", fromUser ? "polite" : "off");
+      capText.textContent = slides[i].dataset.caption || "";
+      count.textContent = (i + 1) + " / " + n;
+      load(slides[(i + 1) % n]); // preload the next photo
+      schedule();
+    }
+    function schedule() {
+      clearTimeout(timer);
+      restartBar();
+      if (playing) timer = setTimeout(function () { go(cur + 1); }, DELAY);
+    }
+    function setPlaying(p) {
+      playing = p;
+      pauseBtn.classList.toggle("is-paused", !p);
+      pauseBtn.setAttribute("aria-label", p ? "Pause slideshow" : "Play slideshow");
+      schedule();
+    }
+
+    controls.hidden = false;
+    pauseBtn.classList.toggle("is-paused", !playing);
+    pauseBtn.setAttribute("aria-label", playing ? "Pause slideshow" : "Play slideshow");
+    $("hero-prev").addEventListener("click", function () { go(cur - 1, -1); });
+    $("hero-next").addEventListener("click", function () { go(cur + 1, 1); });
+    pauseBtn.addEventListener("click", function () { setPlaying(!playing); });
+
+    // Pause while the tab is hidden or the hero is scrolled out of view, to save data and battery.
+    var visible = true;
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { clearTimeout(timer); bar.classList.add("is-paused"); }
+      else if (visible) schedule();
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (!visible) { clearTimeout(timer); bar.classList.add("is-paused"); }
+        else if (!document.hidden) schedule();
+      }).observe(document.querySelector(".hero"));
+    }
+
+    // Swipe left/right on the hero to change photo.
+    var hero = document.querySelector(".hero"), sx = null, sy = null;
+    hero.addEventListener("touchstart", function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    hero.addEventListener("touchend", function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5 && !e.target.closest("a, button")) go(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+      sx = sy = null;
+    });
+
+    // Start loading the second photo once the page has finished loading.
+    if (document.readyState === "complete") load(slides[1]);
+    else window.addEventListener("load", function () { load(slides[1]); });
+    schedule();
+  })();
+
   /* ---------- Header: solid background after scrolling ---------- */
   var header = document.querySelector(".site-header");
   function onScroll() { header.classList.toggle("is-solid", window.scrollY > 40); }
