@@ -16,5 +16,5 @@ window.LM_CONFIG = {
   mapLink: "",
 
   // Hero slideshow: how many seconds each photo stays on screen (e.g. 0.6, 2, 4).
-  heroSlideSeconds: 0.6,
+  heroSlideSeconds: 2,
 };
