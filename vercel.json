@@ -1,0 +1,14 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/src", "destination": "/", "permanent": true },
+    { "source": "/src/:path*", "destination": "/", "permanent": true },
+    { "source": "/scripts/:path*", "destination": "/", "permanent": true },
+    { "source": "/content/:path*", "destination": "/", "permanent": true },
+    { "source": "/dist/:path*", "destination": "/", "permanent": true },
+    { "source": "/site.config.mjs", "destination": "/", "permanent": true },
+    { "source": "/package.json", "destination": "/", "permanent": true },
+    { "source": "/vercel.json", "destination": "/", "permanent": true },
+    { "source": "/assets/images/README.txt", "destination": "/", "permanent": true }
+  ]
+}
