@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sivakum244-cell.github.io/little-mermaid-website-final/sitemap.xml
