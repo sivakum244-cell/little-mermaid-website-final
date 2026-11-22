@@ -19,7 +19,9 @@
     var slides = Array.prototype.slice.call(document.querySelectorAll(".hero-slide"));
     var controls = $("hero-controls");
     if (slides.length < 2 || !controls) return;
-    var DELAY = 6000;
+    var DELAY = Math.max(400, Math.round((Number(cfg.heroSlideSeconds) || 6) * 1000));
+    // Fade takes at most half the display time, capped at 1.4 s.
+    document.documentElement.style.setProperty("--fade-ms", Math.min(1400, Math.round(DELAY / 2)) + "ms");
     var cur = 0, timer = null, playing = !reduceMotion;
     var pauseBtn = $("hero-pause"), capText = $("hero-caption-text"), count = $("hero-count"), cap = $("hero-caption"), bar = $("hero-progress");
     document.documentElement.style.setProperty("--slide-ms", DELAY + "ms");
@@ -56,7 +58,15 @@
     function schedule() {
       clearTimeout(timer);
       restartBar();
-      if (playing) timer = setTimeout(function () { go(cur + 1); }, DELAY);
+      if (playing) timer = setTimeout(advance, DELAY);
+    }
+    // Only move on once the next photo has downloaded, so a slow connection never shows a blank slide.
+    function advance() {
+      var next = slides[(cur + 1) % slides.length];
+      load(next);
+      var img = next.querySelector(".hs-main");
+      if (img.complete || next.dataset.broken) go(cur + 1);
+      else timer = setTimeout(advance, 150);
     }
     function setPlaying(p) {
       playing = p;
@@ -96,9 +106,17 @@
       sx = sy = null;
     });
 
-    // Start loading the second photo once the page has finished loading.
-    if (document.readyState === "complete") load(slides[1]);
-    else window.addEventListener("load", function () { load(slides[1]); });
+    // Once the page has finished loading, fetch the remaining photos in order,
+    // a few at a time, so they are ready for a fast slideshow.
+    function preloadAll() {
+      var i = 1;
+      (function batch() {
+        for (var k = 0; k < 3 && i < slides.length; k++, i++) load(slides[i]);
+        if (i < slides.length) setTimeout(batch, 400);
+      })();
+    }
+    if (document.readyState === "complete") preloadAll();
+    else window.addEventListener("load", preloadAll);
     schedule();
   })();
 

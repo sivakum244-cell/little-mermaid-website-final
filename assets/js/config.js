@@ -14,4 +14,7 @@ window.LM_CONFIG = {
   // Optional: a Google Maps share link for the exact property location.
   // If empty, the "Open in maps" button searches for the address.
   mapLink: "",
+
+  // Hero slideshow: how many seconds each photo stays on screen (e.g. 0.6, 2, 4).
+  heroSlideSeconds: 0.6,
 };
